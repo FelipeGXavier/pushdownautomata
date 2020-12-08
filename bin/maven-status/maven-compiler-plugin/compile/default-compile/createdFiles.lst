@@ -1,8 +1,0 @@
-automata/Processor.class
-builders/TransitionResultBuilder.class
-automata/TransitionInput.class
-automata/TransitionResult.class
-builders/AutomataBuilder.class
-builders/TransitionInputBuilder.class
-automata/State.class
-automata/Automata.class
