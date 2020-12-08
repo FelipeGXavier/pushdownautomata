@@ -7,6 +7,7 @@ import builders.TransitionInputBuilder;
 import builders.TransitionResultBuilder;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 
@@ -35,106 +36,6 @@ public class AutomataTest {
                         .setAcceptStates(acceptedStates)
                         .setStates(loadTransitions())
                         .createAutomata();
-    }
-
-    @Test
-    @DisplayName("Teste com um palíndromo aceito formado apenas por zeros")
-    public void palindromeOnlyWithZeros() {
-        String input = "000000";
-        automata.setInput(input);
-        Processor processor = new Processor(automata);
-        processor.proccess();
-        assertTrue(processor.isAccepted());
-    }
-
-    @Test
-    @DisplayName("Teste com um palíndromo aceito formado apenas por uns")
-    public void palindromeOnlyWithOnes() {
-        String input = "111111";
-        automata.setInput(input);
-        Processor processor = new Processor(automata);
-        processor.proccess();
-        assertTrue(processor.isAccepted());
-    }
-
-    @Test
-    @DisplayName("Teste com um palíndromo NÃO aceito formado apenas por zeros")
-    public void invalidPalindromeOnlyWithZeros() {
-        String input = "0000000";
-        automata.setInput(input);
-        Processor processor = new Processor(automata);
-        processor.proccess();
-        assertFalse(processor.isAccepted());
-    }
-
-    @Test
-    @DisplayName("Teste com um palíndromo NÃO aceito formado apenas por uns")
-    public void invalidPalindromeOnlyWithOnes() {
-        String input = "11111";
-        automata.setInput(input);
-        Processor processor = new Processor(automata);
-        processor.proccess();
-        assertFalse(processor.isAccepted());
-    }
-
-    @Test
-    @DisplayName("Teste com um palíndromo longo")
-    public void longPalindrome() {
-        String input = "100101010010101001";
-        automata.setInput(input);
-        Processor processor = new Processor(automata);
-        processor.proccess();
-        assertTrue(processor.isAccepted());
-    }
-
-    @Test
-    @DisplayName("Teste com um palíndromo longo não aceito")
-    public void invalidLongPalindrome() {
-        String input = "1001010100010101001";
-        automata.setInput(input);
-        Processor processor = new Processor(automata);
-        processor.proccess();
-        assertFalse(processor.isAccepted());
-    }
-
-    @Test
-    @DisplayName("Teste com um palíndromo válido, porém NÃO aceito pela linguagem")
-    public void invalidPalindroForProvidedAlphabet() {
-        String input = "abaaba";
-        automata.setInput(input);
-        Processor processor = new Processor(automata);
-        processor.proccess();
-        assertFalse(processor.isAccepted());
-    }
-
-    @Test
-    @DisplayName("Teste com um palíndromo de apenas dois dígitos com zero")
-    public void twoDigitsPalindromeZero() {
-        String input = "00";
-        automata.setInput(input);
-        Processor processor = new Processor(automata);
-        processor.proccess();
-        assertTrue(processor.isAccepted());
-    }
-
-    @Test
-    @DisplayName("Teste com um palíndromo de apenas dois dígitos com um")
-    public void twoDigitsPalindromeOne() {
-        String input = "11";
-        automata.setInput(input);
-        Processor processor = new Processor(automata);
-        processor.proccess();
-        assertTrue(processor.isAccepted());
-    }
-
-    @Test
-    @DisplayName("Empty input")
-    public void emptyInput() {
-        String input = "";
-        automata.setInput(input);
-        Processor processor = new Processor(automata);
-        processor.proccess();
-        assertFalse(processor.isAccepted());
     }
 
     public static HashMap<String, HashMap<TransitionInput, TransitionResult>> loadTransitions() {
@@ -283,5 +184,117 @@ public class AutomataTest {
         states.put("q1", transitionsQ1);
         states.put("q2", transitionsQ2);
         return states;
+    }
+
+    @Test
+    @DisplayName("Teste com um palíndromo aceito formado apenas por zeros")
+    public void palindromeOnlyWithZeros() {
+        String input = "000000";
+        automata.setInput(input);
+        Processor processor = new Processor(automata);
+        processor.proccess();
+        assertTrue(processor.isAccepted());
+    }
+
+    @Test
+    @DisplayName("Teste com um palíndromo aceito formado apenas por uns")
+    public void palindromeOnlyWithOnes() {
+        String input = "111111";
+        automata.setInput(input);
+        Processor processor = new Processor(automata);
+        processor.proccess();
+        assertTrue(processor.isAccepted());
+    }
+
+    @Test
+    @DisplayName("Teste com um palíndromo NÃO aceito formado apenas por zeros")
+    public void invalidPalindromeOnlyWithZeros() {
+        String input = "0000000";
+        automata.setInput(input);
+        Processor processor = new Processor(automata);
+        processor.proccess();
+        assertFalse(processor.isAccepted());
+    }
+
+    @Test
+    @DisplayName("Teste com um palíndromo NÃO aceito formado apenas por uns")
+    public void invalidPalindromeOnlyWithOnes() {
+        String input = "11111";
+        automata.setInput(input);
+        Processor processor = new Processor(automata);
+        processor.proccess();
+        assertFalse(processor.isAccepted());
+    }
+
+    @Test
+    @DisplayName("Teste com um palíndromo longo")
+    public void longPalindrome() {
+        String input = "100101010010101001";
+        automata.setInput(input);
+        Processor processor = new Processor(automata);
+        processor.proccess();
+        assertTrue(processor.isAccepted());
+    }
+
+    @Test
+    @DisplayName("Teste com um palíndromo longo não aceito")
+    public void invalidLongPalindrome() {
+        String input = "1001010100010101001";
+        automata.setInput(input);
+        Processor processor = new Processor(automata);
+        processor.proccess();
+        assertFalse(processor.isAccepted());
+    }
+
+    @Test
+    @DisplayName("Teste com um palíndromo válido, porém NÃO aceito pela linguagem")
+    public void invalidPalindroForProvidedAlphabet() {
+        String input = "abaaba";
+        automata.setInput(input);
+        Processor processor = new Processor(automata);
+        processor.proccess();
+        assertFalse(processor.isAccepted());
+    }
+
+    @Test
+    @DisplayName("Teste com um palíndromo de apenas dois dígitos com zero")
+    public void twoDigitsPalindromeZero() {
+        String input = "00";
+        automata.setInput(input);
+        Processor processor = new Processor(automata);
+        processor.proccess();
+        assertTrue(processor.isAccepted());
+    }
+
+    @Test
+    @DisplayName("Teste com um palíndromo de apenas dois dígitos com um")
+    public void twoDigitsPalindromeOne() {
+        String input = "11";
+        automata.setInput(input);
+        Processor processor = new Processor(automata);
+        processor.proccess();
+        assertTrue(processor.isAccepted());
+    }
+
+    @Test
+    @DisplayName("Empty input")
+    public void emptyInput() {
+        String input = "";
+        automata.setInput(input);
+        Processor processor = new Processor(automata);
+        processor.proccess();
+        assertFalse(processor.isAccepted());
+    }
+
+    @Test
+    @BeforeAll
+    public void display() {
+        String input = "100101010010101001";
+        automata.setInput(input);
+        Processor processor = new Processor(automata);
+        automata.display();
+        System.out.println("Entrada: " + input);
+        processor.proccess();
+        System.out.println("Cadeia aceita? " + (processor.isAccepted() ? "Sim" : "Não"));
     }
 }

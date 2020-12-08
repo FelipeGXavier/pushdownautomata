@@ -1,8 +1,6 @@
 package automata;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class Automata {
 
@@ -95,6 +93,15 @@ public class Automata {
 
     public void setStackAlphabet(List<String> stackAlphabet) {
         this.stackAlphabet = stackAlphabet;
+    }
+
+    public void display(){
+        System.out.println("Estado inicial: " + this.initialState);
+        System.out.println("Estados: " + String.join(",", this.states.keySet()));
+        System.out.println("Estados de aceitação: " + String.join(",", this.acceptStates));
+        System.out.println("Alfabeto: " + String.join(",", this.alphabet));
+        System.out.println("Alfabeto da pilha: " + String.join(",", this.stackAlphabet));
+        System.out.println("Símbolo inicial da pilha: " + this.initialStackInput);
     }
 
     public void pop() {
