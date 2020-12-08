@@ -24,13 +24,13 @@ public class AutomataTest {
     @Before
     public void setUp() throws Exception {
         List<String> acceptedStates = new ArrayList<>(Collections.singletonList("q2"));
-        List<String> alphabhet = new ArrayList<>(Arrays.asList("0", "1"));
+        List<String> alphabet = new ArrayList<>(Arrays.asList("0", "1"));
         List<String> stackAlphabet = new ArrayList<>(Arrays.asList("0", "1", "z0"));
         String initialSymbolStack = "z0";
         automata =
                 new AutomataBuilder()
                         .setInitialStackInput(initialSymbolStack)
-                        .setAlphabet(alphabhet)
+                        .setAlphabet(alphabet)
                         .setStackAlphabet(stackAlphabet)
                         .setInitialState("q0")
                         .setAcceptStates(acceptedStates)

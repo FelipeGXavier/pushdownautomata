@@ -1,6 +1,5 @@
 package builders;
 
-import automata.State;
 import automata.TransitionResult;
 
 public class TransitionResultBuilder {

@@ -48,7 +48,6 @@ public class Processor {
             this.automata.push(action.substring(action.length() - 1));
         } else if (action.contains("pop")) {
             this.automata.pop();
-            ;
         }
         this.current = newState;
     }
