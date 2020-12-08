@@ -8,20 +8,29 @@ public class Automata {
 
     private String input;
     private HashMap<String, HashMap<TransitionInput, TransitionResult>> states;
-    private List<State> acceptStates;
+    private List<String> acceptStates;
     private String initialState;
     private List<String> alphabet;
     private String initialStackInput;
     private Stack<String> stack = new Stack<>();
+    private List<String> stackAlphabet;
 
-    public Automata(String input, HashMap<String, HashMap<TransitionInput, TransitionResult>> states, List<State> acceptStates, String initialState, List<String> alphabet, String initialStackInput) {
+    public Automata(
+            String input,
+            HashMap<String, HashMap<TransitionInput, TransitionResult>> states,
+            List<String> acceptStates,
+            String initialState,
+            List<String> alphabet,
+            String initialStackInput,
+            List<String> stackAlphabet) {
         this.input = input;
         this.states = states;
         this.acceptStates = acceptStates;
         this.initialState = initialState;
         this.alphabet = alphabet;
         this.initialStackInput = initialStackInput;
-        this.stack.add("z0");
+        this.stackAlphabet = stackAlphabet;
+        this.stack.add(initialStackInput);
     }
 
     public String getInput() {
@@ -40,11 +49,11 @@ public class Automata {
         this.states = states;
     }
 
-    public List<State> getAcceptStates() {
+    public List<String> getAcceptStates() {
         return acceptStates;
     }
 
-    public void setAcceptStates(List<State> acceptStates) {
+    public void setAcceptStates(List<String> acceptStates) {
         this.acceptStates = acceptStates;
     }
 
@@ -78,6 +87,14 @@ public class Automata {
 
     public void setStack(Stack<String> stack) {
         this.stack = stack;
+    }
+
+    public List<String> getStackAlphabet() {
+        return stackAlphabet;
+    }
+
+    public void setStackAlphabet(List<String> stackAlphabet) {
+        this.stackAlphabet = stackAlphabet;
     }
 
     public void pop() {
