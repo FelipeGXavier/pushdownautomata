@@ -57,7 +57,7 @@ public class Processor {
         String endOfLineSymbol = "B";
         if (input.length() == 2) {
             input = input.charAt(0) + "x" + input.charAt(1);
-        } else if (input.length() % 2 == 0) {
+        } else if (input.length() > 0 && input.length() % 2 == 0) {
             int middle = input.length() / 2;
             input = input.substring(0, middle - 1) + "x" + input.substring(middle - 1);
         }
